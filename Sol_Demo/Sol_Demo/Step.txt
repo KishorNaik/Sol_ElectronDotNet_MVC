@@ -1,0 +1,38 @@
+﻿https://github.com/ElectronNET/Electron.NET
+https://elanderson.net/2018/04/create-a-desktop-application-using-asp-net-core-and-electron-net/
+
+Step 1:
+Install Package
+Install-Package ElectronNET.API
+
+Step 2:
+Add Following Code in Program.cs
+ public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
+                .UseStartup<Startup>()
+                .UseElectron(args);
+
+Step 3:
+Add following code in Start Up (Configure Method)
+// Open the Electron-Window here
+            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+
+Step 4:
+Add following code in .csProj
+
+<ItemGroup>
+     <DotNetCliToolReference Include="ElectronNET.CLI" Version="0.0.9" />
+</ItemGroup>
+
+Step 5:
+Open Command Prompt , add the following command
+dotnet restore
+
+Step 6:
+Open Command Prompt, Add the following Command
+dotnet electronize init
+
+Step 7:
+Open Command Prompt, Add the following Command
+dotnet electronize start
+
